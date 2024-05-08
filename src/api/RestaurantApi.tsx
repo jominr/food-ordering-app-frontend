@@ -50,6 +50,7 @@ export const useSearchRestaurants = (
   }
 
   const { data: results, isLoading } = useQuery(
+    // searchState改变，会重新请求，会获取新的results
     ["searchRestaurants", searchState], 
     createSearchRequest,
     { enabled: !!city }, // this query is going to run unless we have value for city argument.

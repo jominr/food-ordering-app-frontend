@@ -1,6 +1,7 @@
 import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
+// Toast 组件包
 import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -8,7 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyUser = ()=> {
   const { getAccessTokenSilently } = useAuth0();
 
-  // 定义一下这个函数返回值的类型，方便我们在page中调用时拿到具体的类型。
+  // 定义一下这个函数返回值的类型，这个对应的是后台、数据库定义的User，方便我们在page中调用时拿到具体的类型。
   const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
@@ -45,6 +46,7 @@ type CreateUserRequest = {
 }
 
 export const useCreateMyUser = () => {
+  // 这个function是让我们fetch the user's token from auth0 server.
   const { getAccessTokenSilently } = useAuth0();
 
   // 定义一个mutation函数，用于发起数据变更请求，

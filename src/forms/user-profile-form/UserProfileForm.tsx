@@ -8,8 +8,10 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+// we can specify all the properties that our form has.
 // formSchema: validation and validation messages
 const formSchema = z.object({
+  // email field is going to be a read only field, 所以不需要校验，optional()即可。
   email: z.string().optional(),
   // name has to have at least one character
   name: z.string().min(1, "name is required"),
@@ -38,11 +40,13 @@ const UserProfileForm = ({ currentUser, isLoading, onSave, title="User Profile",
     defaultValues: currentUser, // 默认值
   });
 
+  // 有新的currentUser,能及时更新
   useEffect(() => {
     form.reset(currentUser); // 如果reRender或者current user改变，重置表单
   }, [currentUser, form]);
 
   return (
+    // 这是shadcn Form, 我们使用useForm返回了所有properties，把所有的form variable 给这个shadcn Form
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
@@ -56,12 +60,15 @@ const UserProfileForm = ({ currentUser, isLoading, onSave, title="User Profile",
           </FormDescription>
         </div>
         <FormField
+          // this formfield is controlled by useForm's control
           control={form.control}
           name="email"
           render={({field})=>(
             <FormItem>
               <FormLabel>Email</FormLabel>
+              {/* FormControl包裹在input外边，可以展示error这些东西 */}
               <FormControl>
+                {/* the form is being managed by react hook form, this field object is going to contain a bunch of information and properties about the state of this input */}
                 <Input {...field} disabled className="bg-white"/>
               </FormControl>
             </FormItem>

@@ -1,4 +1,3 @@
-import { UseQueryResult } from "react-query";
 
 export type User = {
   _id: string,

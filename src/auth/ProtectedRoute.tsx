@@ -8,8 +8,9 @@ const ProtectedRoute = () => {
   if (isLoading) {
     return null;
   }
-
+  // 如果没有isLoading, rerender以后isAuthenticated是false, 然后就一直在首页
   if (isAuthenticated) {
+    // Outlet: render all the child roots of this component.
     return <Outlet />;
   }
 

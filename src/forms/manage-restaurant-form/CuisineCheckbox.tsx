@@ -11,10 +11,13 @@ const CuisineCheckbox = ({cuisine, field }: Props) => {
   // field.value = ["pasta", "pizza"],
   // cuisine = pizza
   return (
+    // 每个checkbox也要有飘红效果，所以这里也用FormItem包裹
     <FormItem className="flex flex-row items-center space-x-1 space-y-0 mt-2">
       <FormControl>
         <Checkbox
           className="bg-white"
+          // field.value is going to be an array of all the items that user has selected so far
+          // cuisine is the cuisine checkbox
           checked={field.value.includes(cuisine)}
           onCheckedChange={(checked)=>{
             if (checked) {

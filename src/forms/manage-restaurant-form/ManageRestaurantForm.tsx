@@ -42,7 +42,7 @@ const formSchema = z.object({
   imageFile: z.instanceof(File, {message: "image is required"}).optional(),
   }).refine((data) => data.imageUrl || data.imageFile, {
     message: "Either image URL or image File must be provided",
-    path: ["imageFile"],
+    path: ["imageFile"], // this is where we want to display the image
   });
 
 // create a type based on this form schema
@@ -84,6 +84,7 @@ const ManageRestaurantForm = ({ isLoading, onSave, restaurant } : Props) => {
 
   const onSubmit = (formDataJson: RestaurantFormData) => {
     // convert formDataJson to a new FormData object,
+    // It uses the same format a form would use if the encoding type were set to "multipart/form-data".
     const formData = new FormData();
 
     formData.append("restaurantName", formDataJson.restaurantName);

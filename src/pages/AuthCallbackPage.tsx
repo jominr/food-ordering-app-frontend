@@ -10,9 +10,11 @@ const AuthCallbackPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth0();
   // 使用自定义hook返回了请求api的函数createUser
-  const { createUser, isSuccess } = useCreateMyUser();
+  const { createUser } = useCreateMyUser();
   
   // it stores a state value, but not trigger re-render
+  // useEffect会render2次，我们使用useRef确保它只render1次。
+  // useRef保存的state值改变以后，是不会触发components re-render的。
   const hasCreatedUser = useRef(false);
   
   useEffect(()=>{

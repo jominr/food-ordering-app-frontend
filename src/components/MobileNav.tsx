@@ -1,5 +1,6 @@
 
 import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from './ui/sheet';
+// lucide-react这是一个图标库
 import { CircleUserRound, Menu } from 'lucide-react';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';

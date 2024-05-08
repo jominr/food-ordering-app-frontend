@@ -37,6 +37,7 @@ const SearchBar = ({onSubmit, placeHolder, onReset, searchQuery } : Props) => {
     form.reset({
       searchQuery: "",
     });
+    // 把父级需要reset的地方也reset
     if (onReset) {
       onReset();
     }
@@ -65,6 +66,7 @@ const SearchBar = ({onSubmit, placeHolder, onReset, searchQuery } : Props) => {
             </FormItem>)}
         />
         {/* isDirty: the form has been touched or has a value */}
+        {/* form.formState.isDirty */}
         <Button onClick={handleReset} type="button" variant="outline" className="rounded-full">
           Rest
         </Button>

@@ -23,6 +23,8 @@ const CheckoutButton = ({onCheckout, disabled, isLoading} : Props) => {
 
   const { currentUser, isLoading: isGetUserLoading } = useGetMyUser();
 
+  // 这里跳转到auth进行登录，如果用户不是登录而是注册，并没有跳转AuthCallbackPage保存user到database，而是跳转回这个页面，
+  // 此时就会获取用户失败。
   const onLogin = async () => {
     await loginWithRedirect({
       appState: {

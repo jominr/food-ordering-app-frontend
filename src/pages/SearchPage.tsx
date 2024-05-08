@@ -25,6 +25,7 @@ const SearchPage = () => {
   })
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  // 把city和searchState传进去，作为queryParams 和 searchParams,
   const { results, isLoading } = useSearchRestaurants(searchState, city);
 
   const setSortOption = (sortOption: string) => {

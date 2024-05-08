@@ -113,12 +113,15 @@ const DetailPage = () => {
     }
 
     const checkoutData = {
+      // 菜单信息
       cartItems: cartItems.map((cartItem) => ({
         menuItemId: cartItem._id,
         name: cartItem.name,
         quantity: cartItem.quantity.toString(),
       })),
+      // 店铺信息
       restaurantId: restaurant._id,
+      // 用户快递信息
       deliveryDetails: {
         name: userFormData.name,
         addressLine1: userFormData.addressLine1,

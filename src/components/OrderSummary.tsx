@@ -14,6 +14,7 @@ type Props = {
 }
 
 const OrderSummary = ({restaurant, cartItems, addQuantity, minusQuantity, removeFromCart}:Props) => {
+  
   const getTotalCost = () => {
     const totalItemsPrice = cartItems.reduce(
       (total, cartItem)=> total + cartItem.price * cartItem.quantity, 
